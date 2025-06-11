@@ -72,8 +72,10 @@ export default function Home() {
             alt="Profile Photo" 
             fill 
             className="object-cover"
-            priority
-            sizes="(max-width: 768px) 100vw, 160px"
+            priority={true}
+            loading="eager"
+            quality={90}
+            sizes="(max-width: 768px) 160px, 160px"
           />
         </div>
         
@@ -152,7 +154,9 @@ export default function Home() {
                       alt={tech.name} 
                       fill 
                       className="object-contain"
-                      sizes="(max-width: 768px) 64px, 64px"
+                      loading="eager"
+                      quality={90}
+                      sizes="64px"
                     />
                   </div>
                   <span className="text-white font-medium text-lg text-center group-hover:text-blue-300 transition-colors duration-200">
@@ -237,7 +241,9 @@ export default function Home() {
                   width={96} 
                   height={96} 
                   className="object-contain w-full h-full"
-                  sizes="(max-width: 768px) 96px, 96px"
+                  loading="eager"
+                  quality={90}
+                  sizes="96px"
                 />
               </div>
 
@@ -274,7 +280,15 @@ export default function Home() {
                       `}
                     >
                       <div className="w-4 h-4 relative bg-white/5 rounded-full p-0.5">
-                        <Image src={t.icon} alt={t.name} fill className="object-contain" sizes="16px" />
+                        <Image 
+                          src={t.icon} 
+                          alt={t.name} 
+                          fill 
+                          className="object-contain" 
+                          sizes="16px"
+                          loading="eager"
+                          quality={90}
+                        />
                       </div>
                       <span className="font-medium tracking-wide">{t.name}</span>
                     </span>

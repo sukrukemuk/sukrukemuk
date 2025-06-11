@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useState } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
@@ -194,6 +194,20 @@ export default function Projects() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedApp, setSelectedApp] = useState<App | null>(null);
   const [currentScreenshotIndex, setCurrentScreenshotIndex] = useState(0);
+  const [preloadedImages, setPreloadedImages] = useState<Set<string>>(new Set());
+
+  // Preload all images when app is selected
+  useEffect(() => {
+    if (selectedApp) {
+      selectedApp.screenshots.forEach(screenshot => {
+        const img = new window.Image();
+        img.src = screenshot;
+        img.onload = () => {
+          setPreloadedImages(prev => new Set([...prev, screenshot]));
+        };
+      });
+    }
+  }, [selectedApp]);
 
   const handleAppSelect = (app: App) => {
     setSelectedApp(app);
@@ -382,6 +396,9 @@ export default function Projects() {
                       fill
                       className="object-contain"
                       sizes="220px"
+                      priority={true}
+                      loading="eager"
+                      quality={90}
                     />
                   </div>
                   <Image
@@ -419,13 +436,23 @@ export default function Projects() {
                   ))}
                 </div>
                 <button
-                  onClick={handleNextScreenshot}
-                  className="bg-white/20 hover:bg-white/30 px-4 py-1.5 rounded-full text-xs font-medium text-white transition-colors duration-200 flex items-center gap-1"
+                  onClick={currentScreenshotIndex === selectedApp.screenshots.length - 1 ? handleCloseModal : handleNextScreenshot}
+                  className={`${
+                    currentScreenshotIndex === selectedApp.screenshots.length - 1 
+                    ? 'bg-red-500/80 hover:bg-red-500/90' 
+                    : 'bg-white/20 hover:bg-white/30'
+                  } px-4 py-1.5 rounded-full text-xs font-medium text-white transition-colors duration-200 flex items-center gap-1`}
                 >
-                  <span>Next</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  <span>{currentScreenshotIndex === selectedApp.screenshots.length - 1 ? 'Close' : 'Next'}</span>
+                  {currentScreenshotIndex === selectedApp.screenshots.length - 1 ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  )}
                 </button>
               </div>
               <button

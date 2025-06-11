@@ -49,7 +49,17 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <Link href="/" className="text-white font-mono text-xl tracking-wider hover:text-blue-400 transition-colors duration-200">
+            <Link 
+              href="/" 
+              className="text-white/90 font-mono text-xl tracking-wider hover:text-white transition-colors duration-300"
+              onClick={(e) => {
+                e.preventDefault();
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth'
+                });
+              }}
+            >
               {displayText}
               {isTyping && <span className="animate-blink">|</span>}
             </Link>
@@ -64,9 +74,9 @@ const Navbar = () => {
                   href={item.path}
                   className={`${
                     pathname === item.path
-                      ? 'bg-white/20 text-white'
-                      : 'text-gray-300 hover:bg-white/10 hover:text-white'
-                  } px-3 py-2 rounded-md text-sm font-medium backdrop-blur-lg transition-all duration-200`}
+                      ? 'bg-white/10 text-white shadow-lg'
+                      : 'text-white/70 hover:bg-white/5 hover:text-white'
+                  } px-4 py-2 rounded-full text-sm font-medium backdrop-blur-xl transition-all duration-300 ease-in-out hover:shadow-md hover:scale-105`}
                 >
                   {item.name}
                 </Link>
@@ -78,7 +88,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsDrawerOpen(!isDrawerOpen)}
-              className="text-white hover:text-blue-400 focus:outline-none"
+              className="text-white/90 hover:text-white focus:outline-none transition-colors duration-300"
             >
               <svg
                 className="h-6 w-6"
@@ -102,14 +112,14 @@ const Navbar = () => {
 
       {/* Mobile Drawer */}
       <div
-        className={`fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
+        className={`fixed inset-0 bg-gradient-to-br from-[#0F172A]/30 via-[#1E293B]/30 to-[#0F172A]/30 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
           isDrawerOpen ? 'opacity-100 z-[60]' : 'opacity-0 pointer-events-none'
         }`}
         onClick={() => setIsDrawerOpen(false)}
       />
       
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-gray-900/95 backdrop-blur-xl transform transition-transform duration-300 ease-in-out md:hidden z-[70] ${
+        className={`fixed top-0 right-0 h-full w-64 bg-gradient-to-br from-[#0F172A]/40 via-[#1E293B]/40 to-[#0F172A]/40 backdrop-blur-xl transform transition-transform duration-300 ease-in-out md:hidden z-[70] ${
           isDrawerOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -121,9 +131,9 @@ const Navbar = () => {
               onClick={() => setIsDrawerOpen(false)}
               className={`${
                 pathname === item.path
-                  ? 'bg-white/20 text-white'
-                  : 'text-gray-300 hover:bg-white/10 hover:text-white'
-              } px-3 py-2 rounded-md text-sm font-medium transition-all duration-200`}
+                  ? 'bg-white/10 text-white shadow-lg'
+                  : 'text-white/70 hover:bg-white/5 hover:text-white'
+              } px-4 py-3 rounded-full text-sm font-medium transition-all duration-300 ease-in-out hover:shadow-md hover:scale-105`}
             >
               {item.name}
             </Link>
@@ -131,8 +141,11 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Liquid glass effect background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-xl -z-10" />
+      {/* Enhanced Modern Liquid glass effect background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0a192f]/40 via-[#112240]/30 to-[#0a192f]/40 backdrop-blur-2xl -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#1e3a8a]/5 via-[#1e40af]/5 to-[#1e3a8a]/5 -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#1e3a8a]/5 via-[#1e40af]/5 to-[#1e3a8a]/5 -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-[#1e3a8a]/5 via-transparent to-[#1e40af]/5 -z-10" />
     </nav>
   );
 };
