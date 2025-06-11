@@ -299,22 +299,6 @@ export default function Home() {
                   );
                 })}
               </div>
-
-              {/* View project link */}
-              <a 
-                href={proj.link}
-                className="mt-6 px-6 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white/90 hover:text-white transition-all duration-300 text-sm font-medium flex items-center gap-2 group-hover:translate-y-0 translate-y-4 opacity-0 group-hover:opacity-100"
-              >
-                View Project
-                <svg 
-                  className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </a>
             </div>
           ))}
         </div>

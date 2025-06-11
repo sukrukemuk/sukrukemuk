@@ -13,6 +13,13 @@ const IPhoneUI = dynamic(() => import('@/components/iPhoneUI'), {
   )
 });
 
+interface App {
+  name: string;
+  screenshots: string[];
+  description: string;
+  icon: string;
+}
+
 const apps = [
   {
     id: '1',
@@ -185,10 +192,10 @@ const projectLogos: { [key: string]: string } = {
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<{ name: string; type: ProjectType } | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedApp, setSelectedApp] = useState<any>(null);
+  const [selectedApp, setSelectedApp] = useState<App | null>(null);
   const [currentScreenshotIndex, setCurrentScreenshotIndex] = useState(0);
 
-  const handleAppSelect = (app: any) => {
+  const handleAppSelect = (app: App) => {
     setSelectedApp(app);
     setCurrentScreenshotIndex(0);
     setIsModalOpen(true);
@@ -279,7 +286,7 @@ export default function Projects() {
                     <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
                   </div>
                 }>
-                  {/* @ts-ignore */}
+                  {/* @ts-expect-error */}
                   <IPhoneUI apps={apps} onModalOpenChange={setIsModalOpen} onAppSelect={handleAppSelect} />
                 </Suspense>
               </div>
