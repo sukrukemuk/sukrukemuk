@@ -53,11 +53,13 @@ const Navbar = () => {
               href="/" 
               className="text-white/90 font-mono text-xl tracking-wider hover:text-white transition-colors duration-300"
               onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({
-                  top: 0,
-                  behavior: 'smooth'
-                });
+                if (pathname === '/') {
+                  e.preventDefault();
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                  });
+                }
               }}
             >
               {displayText}
