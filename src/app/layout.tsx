@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,6 +13,9 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+// Google Analytics ID
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -29,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "tr_TR",
-    url: "https://sukrukemuk.com",
+    url: process.env.NEXT_PUBLIC_SITE_URL,
     title: "Şükrü Kemük - Software Developer",
     description: "I showcase my mobile and web development projects on my personal website.",
     siteName: "Şükrü Kemük - Software Developer",
@@ -60,6 +64,22 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
+        {GA_ID && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+              strategy="afterInteractive"
+            />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}');
+              `}
+            </Script>
+          </>
+        )}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -67,7 +87,7 @@ export default function RootLayout({
       >
         <Navbar />
         <div className="pt-16">
-        {children}
+          {children}
         </div>
       </body>
     </html>
