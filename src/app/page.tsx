@@ -90,22 +90,56 @@ export default function Home() {
           </div>
 
           <div className="flex flex-wrap gap-4 justify-center mt-6">
-            <a href="mailto:sukrukemuk@gmail.com" className="hover:scale-105 transition-transform duration-200" title="Email">
+            <a 
+              href="mailto:sukrukemuk@gmail.com" 
+              className="hover:scale-105 transition-transform duration-200" 
+              aria-label="Email gönder"
+            >
               <FaEnvelope size={28} className="text-white/80 hover:text-blue-400" />
             </a>
-            <a href="https://github.com/sukrukemuk" target="_blank" rel="noopener noreferrer" className="hover:scale-105 transition-transform duration-200" title="GitHub">
+            <a 
+              href="https://github.com/sukrukemuk" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:scale-105 transition-transform duration-200" 
+              aria-label="GitHub profilimi ziyaret et"
+            >
               <FaGithub size={28} className="text-white/80 hover:text-purple-400" />
             </a>
-            <a href="https://linkedin.com/in/sukrukemuk" target="_blank" rel="noopener noreferrer" className="hover:scale-105 transition-transform duration-200" title="LinkedIn">
+            <a 
+              href="https://linkedin.com/in/sukrukemuk" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:scale-105 transition-transform duration-200" 
+              aria-label="LinkedIn profilimi ziyaret et"
+            >
               <FaLinkedin size={28} className="text-white/80 hover:text-blue-400" />
             </a>
-            <a href="https://x.com/sukrukemuk" target="_blank" rel="noopener noreferrer" className="hover:scale-105 transition-transform duration-200" title="X">
+            <a 
+              href="https://x.com/sukrukemuk" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:scale-105 transition-transform duration-200" 
+              aria-label="X (Twitter) profilimi ziyaret et"
+            >
               <FaXTwitter size={30} className="text-white/80 hover:text-gray-400" />
             </a>
-            <a href="https://instagram.com/sukrukemuk" target="_blank" rel="noopener noreferrer" className="hover:scale-105 transition-transform duration-200" title="Instagram">
+            <a 
+              href="https://instagram.com/sukrukemuk" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:scale-105 transition-transform duration-200" 
+              aria-label="Instagram profilimi ziyaret et"
+            >
               <FaInstagram size={28} className="text-white/80 hover:text-pink-400" />
             </a>
-            <a href="https://facebook.com/sukrukemukk" target="_blank" rel="noopener noreferrer" className="hover:scale-105 transition-transform duration-200" title="Facebook">
+            <a 
+              href="https://facebook.com/sukrukemukk" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:scale-105 transition-transform duration-200" 
+              aria-label="Facebook profilimi ziyaret et"
+            >
               <FaFacebook size={28} className="text-white/80 hover:text-blue-400" />
             </a>
           </div>
