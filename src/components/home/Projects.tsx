@@ -85,7 +85,7 @@ export default function Projects() {
                         fill 
                         className="object-contain" 
                         sizes="16px"
-                        loading="eager"
+                        loading="lazy"
                         quality={90}
                       />
                     </div>

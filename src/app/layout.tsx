@@ -34,7 +34,7 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <Navbar />
-        <div className="pt-[calc(4rem+env(safe-area-inset-top))]">
+        <div className="pt-16">
           {children}
         </div>
       </body>

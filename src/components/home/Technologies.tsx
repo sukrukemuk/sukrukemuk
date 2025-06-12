@@ -19,7 +19,7 @@ const Technologies = () => {
                     alt={tech.name} 
                     fill 
                     className="object-contain"
-                    loading="eager"
+                    loading="lazy"
                     quality={90}
                     sizes="64px"
                   />
