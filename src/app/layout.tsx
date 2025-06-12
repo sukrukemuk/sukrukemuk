@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     apple: '/apple-icon.png',
   },
   verification: {
-    google: "google-site-verification-code", // Google Search Console doğrulama kodunuzu buraya ekleyin
+    google: "EdXISw0EJ2CTFdZ7WUK2MHyhQ2OgOLQ5ipyxEMc_ixQ",
   },
 };
 
