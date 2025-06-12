@@ -51,7 +51,7 @@ const apps = [
     id: '3',
     name: 'MobiWax',
     icon: '/app-icons/mobiWax.png',
-    screenshots: ['/screenshots/mobiwax-1.png', '/screenshots/mobiwax-2.png'],
+    screenshots: [],
   },
   {
     id: '4',
@@ -69,19 +69,19 @@ const apps = [
     id: '5',
     name: 'GeVi',
     icon: '/app-icons/GeVi.jpg',
-    screenshots: ['/screenshots/GeVi-1.png'],
+    screenshots: [],
   },
   {
     id: '6',
     name: 'Courier',
     icon: '/app-icons/courier.png',
-    screenshots: ['/screenshots/courier-1.png'],
+    screenshots: [],
   },
   {
     id: '7',
     name: 'PyLearn',
     icon: '/app-icons/pyLearn.png',
-    screenshots: ['/screenshots/pyLearn-1.png'],
+    screenshots: [],
   },
   {
     id: '8',
@@ -94,11 +94,6 @@ const apps = [
       '/screenshots/dispatcher/4.jpg',
     ],
   },
-      
-
-  
-    
-  
   {
     id: '9',
     name: 'Resepsion Plus',
@@ -136,20 +131,20 @@ interface Technologies {
 
 const projectDetails: ProjectDetails = {
   mobile: {
-    'Apparelte': 'Mobile application focused on store management and customer relationships for the fashion and clothing industry.',
-    'Resepsion Plus': 'Premium application for hotel and restaurant management, handling reservations and customer tracking.',
-    'Resepsion': 'Reservation management system for small and medium-sized businesses.',
-    'MobiWax': 'Mobile application for vehicle maintenance and service tracking.',
-    'AGS Urla': 'Local business and event guide specially developed for the Urla region.',
-    'GeVi': 'Travel planning and note-taking application for travelers.',
-    'Courier': 'Mobile application for courier and delivery tracking.',
-    'PyLearn': 'Interactive learning platform for Python programming education.',
-    'Dispatcher Quiz': 'Training and evaluation application for emergency operators.'
+    'Apparelte': 'A fashion combination app where users can discover, create, and share outfit combinations. Features include following other users, rating combinations, leaving comments, and building a personalized style community.',
+    'Resepsion Plus': 'A comprehensive hotel and accommodation management platform where businesses can create room listings and respond to reservation requests. Enables direct communication between accommodation providers and customers.',
+    'Resepsion': 'A hotel, bungalow, and villa reservation application where users can create booking requests and receive offers from various accommodation providers. Streamlines the booking process for both customers and property owners.',
+    'MobiWax': 'A global car wash service application that connects customers with mobile car wash providers. Users can request on-demand car wash services at their location, making vehicle maintenance more convenient.',
+    'AGS Urla': 'A specialized security services application for the Urla region. Provides information about security services, emergency contacts, and real-time security updates for local businesses and residents.',
+    'GeVi': 'A unique video messaging app that allows users to send scheduled video messages to their loved ones in the future. Perfect for creating lasting memories and special moments.',
+    'Courier': 'An intelligent delivery management system that automatically assigns restaurant orders to available couriers. Features real-time order tracking and status updates for both restaurants and couriers.',
+    'PyLearn': 'An interactive Python programming education platform offering structured learning paths, practical exercises, and real-time coding feedback for beginners and intermediate learners.',
+    'Dispatcher Quiz': 'A specialized training and examination application for aviation dispatchers. Provides comprehensive study materials, practice tests, and performance analytics.'
   },
   web: {
-    'TridyGames': 'Web-based game development and publishing platform.',
-    'Resepsion': 'Web interface and management panel for the reservation system.',
-    'Apparelte': 'E-commerce and management panel for the fashion brand.'
+    'TridyGames': 'A custom website for TridyGames, featuring game showcases, company information, and interactive elements. Built with modern web technologies to provide an engaging user experience.',
+    'Resepsion': 'A comprehensive web platform for the Resepsion reservation system, including an admin panel, booking management, and detailed property listings. Features real-time availability updates and secure payment processing.',
+    'Apparelte': 'A landing page and promotional website for the Apparelte mobile app, showcasing features, technology stack, and user benefits. Includes detailed information about the app\'s capabilities and design philosophy.'
   }
 };
 
@@ -389,25 +384,33 @@ export default function Projects() {
             <div className="backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl overflow-hidden shadow-2xl flex flex-col items-center">
               <div className="relative w-full flex justify-center pt-8 pb-4">
                 <div className="relative w-[220px] h-[476px]">
-                  <div className="absolute top-[3.5%] left-0 w-full h-[93%] z-20 rounded-[40px] overflow-hidden">
-                    <Image
-                      src={selectedApp.screenshots[currentScreenshotIndex]}
-                      alt={selectedApp.name}
-                      fill
-                      className="object-contain"
-                      sizes="220px"
-                      priority={true}
-                      loading="eager"
-                      quality={90}
-                    />
-                  </div>
-                  <Image
-                    src="/iphone_mockup.png"
-                    alt="iPhone Mockup"
-                    fill
-                    className="object-contain z-30 pointer-events-none select-none"
-                    sizes="220px"
-                  />
+                  {selectedApp.screenshots.length > 0 ? (
+                    <>
+                      <div className="absolute top-[3.5%] left-0 w-full h-[93%] z-20 rounded-[40px] overflow-hidden">
+                        <Image
+                          src={selectedApp.screenshots[currentScreenshotIndex]}
+                          alt={selectedApp.name}
+                          fill
+                          className="object-contain"
+                          sizes="220px"
+                          priority={true}
+                          loading="eager"
+                          quality={90}
+                        />
+                      </div>
+                      <Image
+                        src="/iphone_mockup.png"
+                        alt="iPhone Mockup"
+                        fill
+                        className="object-contain z-30 pointer-events-none select-none"
+                        sizes="220px"
+                      />
+                    </>
+                  ) : (
+                    <div className="absolute top-[3.5%] left-0 w-full h-[93%] z-20 rounded-[40px] overflow-hidden bg-white/10 flex items-center justify-center">
+                      <p className="text-white/80 text-sm text-center px-4">Screenshots are not available yet</p>
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="w-full px-8 pb-8 flex flex-col items-center">
@@ -436,15 +439,15 @@ export default function Projects() {
                   ))}
                 </div>
                 <button
-                  onClick={currentScreenshotIndex === selectedApp.screenshots.length - 1 ? handleCloseModal : handleNextScreenshot}
+                  onClick={selectedApp.screenshots.length === 0 || currentScreenshotIndex === selectedApp.screenshots.length - 1 ? handleCloseModal : handleNextScreenshot}
                   className={`${
-                    currentScreenshotIndex === selectedApp.screenshots.length - 1 
+                    selectedApp.screenshots.length === 0 || currentScreenshotIndex === selectedApp.screenshots.length - 1 
                     ? 'bg-red-500/80 hover:bg-red-500/90' 
                     : 'bg-white/20 hover:bg-white/30'
                   } px-4 py-1.5 rounded-full text-xs font-medium text-white transition-colors duration-200 flex items-center gap-1`}
                 >
-                  <span>{currentScreenshotIndex === selectedApp.screenshots.length - 1 ? 'Close' : 'Next'}</span>
-                  {currentScreenshotIndex === selectedApp.screenshots.length - 1 ? (
+                  <span>{selectedApp.screenshots.length === 0 || currentScreenshotIndex === selectedApp.screenshots.length - 1 ? 'Close' : 'Next'}</span>
+                  {selectedApp.screenshots.length === 0 || currentScreenshotIndex === selectedApp.screenshots.length - 1 ? (
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                     </svg>

@@ -85,7 +85,7 @@ export default function Home() {
               Şükrü Kemük
             </h1>
             <h2 className="text-2xl text-gray-300 font-medium">
-              Flutter & Web Developer
+              Software Developer
             </h2>
           </div>
 
