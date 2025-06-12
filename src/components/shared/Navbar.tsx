@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { navItems } from '@/config/navigation';
+import MobileDrawer from './MobileDrawer';
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -36,13 +38,6 @@ const Navbar = () => {
 
     return () => clearTimeout(timeout);
   }, [displayText, isDeleting, isTyping, fullText]);
-
-  const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Services', path: '/services' },
-    { name: 'Contact', path: '/contact' },
-  ];
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50">
@@ -115,36 +110,11 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Drawer */}
-      <div
-        className={`fixed inset-0 bg-gradient-to-br from-[#0F172A]/30 via-[#1E293B]/30 to-[#0F172A]/30 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
-          isDrawerOpen ? 'opacity-100 z-[60]' : 'opacity-0 pointer-events-none'
-        }`}
-        onClick={() => setIsDrawerOpen(false)}
+      <MobileDrawer 
+        isOpen={isDrawerOpen} 
+        onClose={() => setIsDrawerOpen(false)} 
+        items={navItems} 
       />
-      
-      <div
-        className={`fixed top-0 right-0 h-full w-64 bg-gradient-to-br from-[#0F172A]/40 via-[#1E293B]/40 to-[#0F172A]/40 backdrop-blur-xl transform transition-transform duration-300 ease-in-out md:hidden z-[70] ${
-          isDrawerOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
-      >
-        <div className="flex flex-col p-4 space-y-4 mt-16">
-          {navItems.map((item) => (
-            <Link
-              key={item.path}
-              href={item.path}
-              onClick={() => setIsDrawerOpen(false)}
-              className={`${
-                pathname === item.path
-                  ? 'bg-white/10 text-white shadow-lg'
-                  : 'text-white/70 hover:bg-white/5 hover:text-white'
-              } px-4 py-3 rounded-full text-sm font-medium transition-all duration-300 ease-in-out hover:shadow-md hover:scale-105`}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
-      </div>
 
       {/* Enhanced Modern Liquid glass effect background */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#0a192f]/40 via-[#112240]/30 to-[#0a192f]/40 backdrop-blur-2xl -z-10" />

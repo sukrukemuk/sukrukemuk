@@ -1,8 +1,8 @@
-import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Script from "next/script";
+import Navbar from "@/components/shared/Navbar";
+import GoogleAnalytics from "@/components/shared/GoogleAnalytics";
+import { metadata, viewport } from "@/config/metadata";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,44 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Google Analytics ID
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
-
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-};
-
-export const metadata: Metadata = {
-  title: "Şükrü Kemük - Software Developer",
-  description: "I showcase my mobile and web development projects on my personal website. Explore my projects developed with React, Next.js, TypeScript, and modern web technologies.",
-  keywords: ["Şükrü Kemük", "Software Developer", "Web Developer", "Mobile Developer", "React", "Next.js", "TypeScript", "Flutter", "Firebase"],
-  authors: [{ name: "Şükrü Kemük" }],
-  creator: "Şükrü Kemük",
-  publisher: "Şükrü Kemük",
-  robots: "index, follow",
-  openGraph: {
-    type: "website",
-    locale: "tr_TR",
-    url: process.env.NEXT_PUBLIC_SITE_URL,
-    title: "Şükrü Kemük - Software Developer",
-    description: "I showcase my mobile and web development projects on my personal website.",
-    siteName: "Şükrü Kemük - Software Developer",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Şükrü Kemük - Software Developer",
-    description: "I showcase my mobile and web development projects on my personal website.",
-    creator: "@sukrukemuk",
-  },
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-icon.png',
-  },
-  verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
-  },
-};
+export { metadata, viewport };
 
 export default function RootLayout({
   children,
@@ -64,22 +27,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.png" type="image/png" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
-        {GA_ID && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GA_ID}');
-              `}
-            </Script>
-          </>
-        )}
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ''} />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

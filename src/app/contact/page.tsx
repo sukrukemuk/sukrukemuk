@@ -1,26 +1,19 @@
 'use client';
 
-import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram, FaFacebook, FaPhone } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import Header from '@/components/contact/Header';
+import ContactInfo from '@/components/contact/ContactInfo';
+import SocialLinks from '@/components/contact/SocialLinks';
+import Footer from '@/components/shared/Footer';
 
 export default function Contact() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-black/90 flex flex-col items-center px-4 py-24">
+    <main className="min-h-screen bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-black/90 flex flex-col items-center px-4 py-12">
       {/* Simplified Background */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent"></div>
       </div>
 
-      {/* Header Section */}
-      <section className="w-full max-w-4xl flex flex-col items-center glassmorphism p-10 rounded-3xl shadow-2xl mb-12 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10"></div>
-        <h1 className="text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-4 text-center relative">
-          Get in Touch
-        </h1>
-        <p className="text-gray-300 text-center max-w-2xl relative">
-          Feel free to reach out for your projects, ask questions, or discuss potential collaborations.
-        </p>
-      </section>
+      <Header />
 
       <div className="w-full max-w-4xl">
         {/* Contact Information */}
@@ -29,81 +22,15 @@ export default function Contact() {
             Contact Information
           </h2>
 
-          <div className="space-y-6">
-            <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
-                <FaEnvelope className="text-blue-400 text-xl" />
-              </div>
-              <div>
-                <h3 className="text-sm font-medium text-gray-400">Email</h3>
-                <a href="mailto:sukrukemuk@gmail.com" className="text-white hover:text-blue-400 transition-colors duration-200">
-                  sukrukemuk@gmail.com
-                </a>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors duration-200">
-              <div className="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
-                <FaPhone className="text-purple-400 text-xl" />
-              </div>
-              <div>
-                <h3 className="text-sm font-medium text-gray-400">Phone</h3>
-                <a href="tel:+905379214751" className="text-white hover:text-purple-400 transition-colors duration-200">
-                  +90 537 921 47 51
-                </a>
-              </div>
-            </div>
-          </div>
+          <ContactInfo />
 
           <div className="mt-8">
-            <h3 className="text-lg font-semibold text-white mb-4">Social Media</h3>
-            <div className="grid grid-cols-2 gap-4">
-              <a href="https://github.com/sukrukemuk" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors duration-200 group">
-                <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
-                  <FaGithub className="text-white/80 group-hover:text-purple-400 text-xl transition-colors duration-200" />
-                </div>
-                <span className="text-white/80 group-hover:text-purple-400 transition-colors duration-200">GitHub</span>
-              </a>
-              <a href="https://linkedin.com/in/sukrukemuk" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors duration-200 group">
-                <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
-                  <FaLinkedin className="text-white/80 group-hover:text-blue-400 text-xl transition-colors duration-200" />
-                </div>
-                <span className="text-white/80 group-hover:text-blue-400 transition-colors duration-200">LinkedIn</span>
-              </a>
-              <a href="https://instagram.com/sukrukemuk" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors duration-200 group">
-                <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
-                  <FaInstagram className="text-white/80 group-hover:text-pink-400 text-xl transition-colors duration-200" />
-                </div>
-                <span className="text-white/80 group-hover:text-pink-400 transition-colors duration-200">Instagram</span>
-              </a>
-              <a 
-                href="https://x.com/sukrukemuk" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex items-center gap-3 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors duration-200 group"
-                aria-label="X (Twitter) profilimi ziyaret et"
-              >
-                <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
-                  <FaXTwitter className="text-white/80 group-hover:text-gray-400 text-xl transition-colors duration-200" />
-                </div>
-                <span className="text-white/80 group-hover:text-gray-400 transition-colors duration-200">X (Twitter)</span>
-              </a>
-              <a 
-                href="https://facebook.com/sukrukemukk" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex items-center gap-3 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors duration-200 group"
-                aria-label="Facebook profilimi ziyaret et"
-              >
-                <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center">
-                  <FaFacebook className="text-white/80 group-hover:text-blue-400 text-xl transition-colors duration-200" />
-                </div>
-                <span className="text-white/80 group-hover:text-blue-400 transition-colors duration-200">Facebook</span>
-              </a>
-            </div>
+            <SocialLinks />
           </div>
         </div>
       </div>
+
+      <Footer />
 
       {/* Simplified Glass Style */}
       <style jsx global>{`

@@ -1,179 +1,30 @@
 'use client';
 
-import Image from "next/image";
-
-const services = [
-  {
-    title: "Web Development",
-    icon: "/tech-icons/next_js.png",
-    description: "Modern web application development with Next.js and React.",
-    features: [
-      "Next.js",
-      "React",
-      "Tailwind CSS",
-      "Responsive"
-    ],
-    gradient: "from-blue-500/20 to-cyan-500/20",
-    iconBg: "bg-gradient-to-br from-blue-500/30 via-blue-600/20 to-cyan-500/30",
-    benefits: [
-      "High Performance",
-      "SEO Friendly",
-      "Rapid Development",
-      "Modern UI"
-    ]
-  },
-  {
-    title: "Mobile App",
-    icon: "/tech-icons/flutter.webp",
-    description: "Cross-platform mobile application development with Flutter.",
-    features: [
-      "Flutter",
-      "iOS & Android",
-      "Firebase",
-      "State Management"
-    ],
-    gradient: "from-purple-500/20 to-pink-500/20",
-    iconBg: "bg-gradient-to-br from-purple-500/30 via-purple-600/20 to-pink-500/30",
-    benefits: [
-      "Single Codebase",
-      "Native Performance",
-      "Rapid Development",
-      "Rich UI"
-    ]
-  },
-  {
-    title: "Backend Development",
-    icon: "/tech-icons/node_js.png",
-    description: "Backend system development with Node.js and Firebase.",
-    features: [
-      "Node.js",
-      "Firebase",
-      "REST API",
-      "Database"
-    ],
-    gradient: "from-emerald-500/20 to-teal-500/20",
-    iconBg: "bg-gradient-to-br from-emerald-500/30 via-emerald-600/20 to-teal-500/30",
-    benefits: [
-      "Scalable",
-      "Secure",
-      "Fast API",
-      "Real-time"
-    ]
-  }
-];
+import { services } from '@/data/services/services';
+import Header from '@/components/services/Header';
+import ServiceCard from '@/components/services/ServiceCard';
+import ContactCTA from '@/components/services/ContactCTA';
+import Footer from '@/components/shared/Footer';
 
 export default function Services() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-black/90 flex flex-col items-center px-4 py-24">
+    <main className="min-h-screen bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-black/90 flex flex-col items-center px-4 py-12">
       {/* Simplified Background */}
       <div className="fixed inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent"></div>
       </div>
 
-      {/* Header Section */}
-      <section className="w-full max-w-4xl flex flex-col items-center glassmorphism p-10 rounded-3xl shadow-2xl mb-12 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10"></div>
-        <h1 className="text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-4 text-center relative">
-          Services
-        </h1>
-        <p className="text-gray-300 text-center max-w-2xl relative">
-          I provide web and mobile application development, backend systems, and UI/UX design services using modern technologies.
-        </p>
-      </section>
+      <Header />
 
       {/* Services Grid */}
       <div className="w-full max-w-4xl grid md:grid-cols-3 gap-8">
         {services.map((service) => (
-          <div 
-            key={service.title}
-            className="group relative h-full"
-          >
-            <div className="relative glassmorphism p-6 rounded-2xl hover:shadow-xl hover:shadow-blue-500/10 transition-colors duration-200 h-full flex flex-col">
-              <div className="flex flex-col items-center text-center flex-grow">
-                {/* Icon Container */}
-                <div className={`relative w-24 h-24 rounded-2xl overflow-hidden mb-6 ${service.iconBg} backdrop-blur-sm`}>
-                  <div className="relative w-full h-full p-6">
-                    <Image 
-                      src={service.icon} 
-                      alt={service.title}
-                      fill
-                      className="object-contain"
-                      sizes="96px"
-                    />
-                  </div>
-                </div>
-
-                {/* Title */}
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors duration-200">
-                  {service.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-gray-300 text-sm mb-6">
-                  {service.description}
-                </p>
-
-                {/* Technologies Section */}
-                <div className="w-full mb-6">
-                  <h4 className="text-xs font-semibold text-gray-400 mb-3 uppercase tracking-wider">Technologies</h4>
-                  <div className="grid grid-cols-2 gap-2">
-                    {service.features.map((feature) => (
-                      <div 
-                        key={feature}
-                        className="flex items-center justify-center gap-1.5 text-xs font-medium text-gray-300 bg-white/5 rounded-lg p-2 group-hover:bg-white/10 transition-colors duration-200"
-                      >
-                        {feature}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Benefits Section */}
-                <div className="w-full mt-auto">
-                  <h4 className="text-xs font-semibold text-gray-400 mb-3 uppercase tracking-wider">Benefits</h4>
-                  <div className="grid grid-cols-2 gap-2">
-                    {service.benefits.map((benefit) => (
-                      <div 
-                        key={benefit}
-                        className="flex items-center justify-center gap-1.5 text-xs font-medium text-blue-300 bg-blue-500/10 rounded-lg p-2 group-hover:bg-blue-500/20 transition-colors duration-200"
-                      >
-                        {benefit}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <ServiceCard key={service.title} service={service} />
         ))}
       </div>
 
-      {/* Contact CTA */}
-      <div className="w-full max-w-4xl mt-12 glassmorphism p-8 rounded-2xl text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10"></div>
-        <div className="relative">
-          <h2 className="text-2xl font-bold text-white mb-4">
-            Want to Get Services for Your Project?
-          </h2>
-          <p className="text-gray-300 mb-6">
-            Contact me for modern and scalable solutions.
-          </p>
-          <a 
-            href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium hover:shadow-lg hover:shadow-blue-500/20 transition-colors duration-200"
-          >
-            Get in Touch
-            <svg 
-              className="w-4 h-4" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-      </div>
+      <ContactCTA />
+      <Footer />
 
       {/* Simplified Glass Style */}
       <style jsx global>{`

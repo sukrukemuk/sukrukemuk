@@ -1,27 +1,12 @@
-'use client';
+export interface App {
+  id: string;
+  name: string;
+  screenshots: string[];
+  description: string;
+  icon: string;
+}
 
-import { Suspense, useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
-import { apps } from '@/data/projects/projects';
-import type { App } from '@/data/projects/projects';
-import MobileProjects from '@/components/projects/MobileProjects';
-import WebProjects from '@/components/projects/WebProjects';
-import ProjectModal from '@/components/projects/ProjectModal';
-import AppModal from '@/components/projects/AppModal';
-import Footer from '@/components/shared/Footer';
-
-const IPhoneUI = dynamic(() => import('@/components/projects/iPhoneUI'), {
-  ssr: false,
-  loading: () => (
-    <div className="flex items-center justify-center min-h-[400px]">
-      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-    </div>
-  )
-});
-
-type ProjectType = 'mobile' | 'web';
-
-interface ProjectDetails {
+export interface ProjectType {
   mobile: {
     [key: string]: string;
   };
@@ -30,7 +15,7 @@ interface ProjectDetails {
   };
 }
 
-interface Technologies {
+export interface Technologies {
   mobile: {
     [key: string]: string[];
   };
@@ -39,7 +24,105 @@ interface Technologies {
   };
 }
 
-const projectDetails: ProjectDetails = {
+export const apps: App[] = [
+  {
+    id: '1',
+    name: 'Resepsion',
+    icon: '/app-icons/resepsion.jpg',
+    screenshots: [
+      '/screenshots/resepsion/1.jpg',
+      '/screenshots/resepsion/2.jpg',
+      '/screenshots/resepsion/3.jpg',
+      '/screenshots/resepsion/4.jpg',
+      '/screenshots/resepsion/5.jpg',
+      '/screenshots/resepsion/6.jpg',
+    ],
+    description: 'A hotel, bungalow, and villa reservation application where users can create booking requests and receive offers from various accommodation providers.'
+  },
+  {
+    id: '2',
+    name: 'Apparelte',
+    icon: '/app-icons/apparelte.png',
+    screenshots: [
+      '/screenshots/apparelte/1.jpg',
+      '/screenshots/apparelte/2.jpg',
+      '/screenshots/apparelte/3.jpg',
+      '/screenshots/apparelte/4.jpg',
+      '/screenshots/apparelte/5.jpg',
+      '/screenshots/apparelte/6.jpg',
+    ],
+    description: 'A fashion combination app where users can discover, create, and share outfit combinations.'
+  },
+  {
+    id: '3',
+    name: 'MobiWax',
+    icon: '/app-icons/mobiWax.png',
+    screenshots: [],
+    description: 'A global car wash service application that connects customers with mobile car wash providers.'
+  },
+  {
+    id: '4',
+    name: 'AGS Urla',
+    icon: '/app-icons/ags.png',
+    screenshots: [
+      '/screenshots/ags/1.jpg',
+      '/screenshots/ags/2.jpg',
+      '/screenshots/ags/3.jpg',
+      '/screenshots/ags/4.jpg',
+      '/screenshots/ags/5.jpg',
+    ],
+    description: 'A specialized security services application for the Urla region.'
+  },
+  {
+    id: '5',
+    name: 'GeVi',
+    icon: '/app-icons/GeVi.jpg',
+    screenshots: [],
+    description: 'A unique video messaging app that allows users to send scheduled video messages to their loved ones in the future.'
+  },
+  {
+    id: '6',
+    name: 'Courier',
+    icon: '/app-icons/courier.png',
+    screenshots: [],
+    description: 'An intelligent delivery management system that automatically assigns restaurant orders to available couriers.'
+  },
+  {
+    id: '7',
+    name: 'PyLearn',
+    icon: '/app-icons/pyLearn.png',
+    screenshots: [],
+    description: 'An interactive Python programming education platform offering structured learning paths.'
+  },
+  {
+    id: '8',
+    name: 'Dispatcher Quiz',
+    icon: '/app-icons/dispatcher.png',
+    screenshots: [
+      '/screenshots/dispatcher/1.jpg',
+      '/screenshots/dispatcher/2.jpg',
+      '/screenshots/dispatcher/3.jpg',
+      '/screenshots/dispatcher/4.jpg',
+    ],
+    description: 'A specialized training and examination application for aviation dispatchers.'
+  },
+  {
+    id: '9',
+    name: 'Resepsion Plus',
+    icon: '/app-icons/resepsion_plus.png',
+    screenshots: [
+      '/screenshots/resepsion_plus/1.jpg',
+      '/screenshots/resepsion_plus/2.jpg',
+      '/screenshots/resepsion_plus/3.jpg',
+      '/screenshots/resepsion_plus/4.jpg',
+      '/screenshots/resepsion_plus/5.jpg',
+      '/screenshots/resepsion_plus/6.jpg',
+    ],
+    description: 'A comprehensive hotel and accommodation management platform.'
+  }
+];
+
+export const projectDetails: ProjectType = {
   mobile: {
     'Apparelte': 'A fashion combination app where users can discover, create, and share outfit combinations. Features include following other users, rating combinations, leaving comments, and building a personalized style community.',
     'Resepsion Plus': 'A comprehensive hotel and accommodation management platform where businesses can create room listings and respond to reservation requests. Enables direct communication between accommodation providers and customers.',
@@ -58,7 +141,7 @@ const projectDetails: ProjectDetails = {
   }
 };
 
-const technologies: Technologies = {
+export const technologies: Technologies = {
   mobile: {
     'Apparelte': ['/tech-icons/flutter.webp', '/tech-icons/firebase.png', '/tech-icons/git.png', '/tech-icons/django.png', '/tech-icons/figma.webp'],
     'Resepsion Plus': ['/tech-icons/flutter.webp', '/tech-icons/firebase.png', '/tech-icons/git.png', '/tech-icons/node_js.png'],
@@ -77,7 +160,7 @@ const technologies: Technologies = {
   }
 };
 
-const projectLogos: { [key: string]: string } = {
+export const projectLogos: { [key: string]: string } = {
   'Resepsion': '/app-icons/resepsion.jpg',
   'Apparelte': '/app-icons/apparelte.png',
   'MobiWax': '/app-icons/mobiWax.png',
@@ -92,96 +175,4 @@ const projectLogos: { [key: string]: string } = {
   'Apparelte Web': '/app-icons/apparelte.png',
   'Portfolio': '/app-icons/sukrukemuk.png',
   'API Backend': '/app-icons/sukrukemuk.png'
-};
-
-export default function Projects() {
-  const [selectedProject, setSelectedProject] = useState<{ name: string; type: 'mobile' | 'web' } | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedApp, setSelectedApp] = useState<App | null>(null);
-  const [currentScreenshotIndex, setCurrentScreenshotIndex] = useState(0);
-  const [preloadedImages, setPreloadedImages] = useState<Set<string>>(new Set());
-
-  // Preload all images when app is selected
-  useEffect(() => {
-    if (selectedApp) {
-      selectedApp.screenshots.forEach(screenshot => {
-        const img = new window.Image();
-        img.src = screenshot;
-        img.onload = () => {
-          setPreloadedImages(prev => new Set([...prev, screenshot]));
-        };
-      });
-    }
-  }, [selectedApp]);
-
-  const handleAppSelect = (app: App) => {
-    setSelectedApp(app);
-    setCurrentScreenshotIndex(0);
-    setIsModalOpen(true);
-  };
-  
-  const handleCloseModal = () => {
-    setSelectedApp(null);
-    setIsModalOpen(false);
-  };
-  
-  const handleNextScreenshot = () => {
-    if (selectedApp) {
-      setCurrentScreenshotIndex((prev: number) => (prev + 1) % selectedApp.screenshots.length);
-    }
-  };
-
-  return (
-    <>
-      <main className="min-h-screen bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-black/90 flex flex-col items-center justify-start py-12 px-4 overflow-x-hidden">
-        {/* Simplified Background */}
-        <div className="fixed inset-0 -z-10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent"></div>
-        </div>
-
-        <div className="w-full max-w-7xl mx-auto">
-          <div className="flex flex-col lg:flex-row gap-8 items-start justify-center">
-            {/* Mobile Projects */}
-            <MobileProjects onProjectSelect={setSelectedProject} />
-
-            {/* Center Content - iPhone UI */}
-            <div className="w-full lg:w-1/3 flex justify-center items-center my-6 lg:my-0">
-              <div className="transform scale-85 md:scale-95">
-                <Suspense fallback={
-                  <div className="flex items-center justify-center min-h-[500px]">
-                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-                  </div>
-                }>
-                  <IPhoneUI apps={apps} onModalOpenChange={setIsModalOpen} onAppSelect={handleAppSelect} />
-                </Suspense>
-              </div>
-            </div>
-
-            {/* Web Projects */}
-            <WebProjects onProjectSelect={setSelectedProject} />
-          </div>
-        </div>
-
-        <Footer />
-      </main>
-
-      {/* Project Details Modal */}
-      <ProjectModal selectedProject={selectedProject} onClose={() => setSelectedProject(null)} />
-
-      {/* App Details Modal */}
-      <AppModal
-        selectedApp={selectedApp}
-        currentScreenshotIndex={currentScreenshotIndex}
-        onClose={handleCloseModal}
-        onNextScreenshot={handleNextScreenshot}
-      />
-
-      <style jsx global>{`
-        .backdrop-blur-lg {
-          backdrop-filter: blur(8px);
-          -webkit-backdrop-filter: blur(8px);
-        }
-      `}</style>
-    </>
-  );
-} 
+}; 
