@@ -4,19 +4,19 @@ import { projects } from '@/data/home/projects';
 
 export default function Projects() {
   return (
-    <section className="w-full max-w-4xl mt-12 glassmorphism p-8 rounded-2xl shadow-xl">
+    <section className="w-full max-w-4xl mt-12 glassmorphism p-4 sm:p-8 rounded-2xl shadow-xl">
       <div className="flex justify-between items-center mb-8">
-        <h3 className="text-2xl font-bold text-white relative">
+        <h3 className="text-xl sm:text-2xl font-bold text-white relative">
           <span className="relative z-10">My Projects</span>
-          <div className="absolute -bottom-2 left-0 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+          <div className="absolute -bottom-2 left-0 w-20 sm:w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
         </h3>
         <a 
           href="/projects" 
-          className="group relative inline-flex items-center gap-2 px-6 py-2.5 text-sm font-medium text-white/90 hover:text-white transition-all duration-300"
+          className="group relative inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-white/90 hover:text-white transition-all duration-300"
         >
-          <span className="relative z-10">View All Projects</span>
+          <span className="relative z-10">View All</span>
           <svg 
-            className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" 
+            className="w-3 h-3 sm:w-4 sm:h-4 transform group-hover:translate-x-1 transition-transform duration-300" 
             fill="none" 
             stroke="currentColor" 
             viewBox="0 0 24 24"
@@ -27,13 +27,13 @@ export default function Projects() {
           <div className="absolute inset-0 border border-white/10 rounded-full group-hover:border-white/20 transition-colors duration-300"></div>
         </a>
       </div>
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-8">
         {projects.map((proj) => (
           <div 
             key={proj.name} 
-            className="group relative bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-6 flex flex-col items-center shadow-lg transition-transform duration-200 hover:-translate-y-1"
+            className="group relative bg-gradient-to-br from-white/10 to-white/5 rounded-2xl p-4 sm:p-6 flex flex-col items-center shadow-lg transition-transform duration-200 hover:-translate-y-1"
           >
-            <div className="relative w-24 h-24 rounded-2xl overflow-hidden bg-white/10 flex items-center justify-center mb-4">
+            <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden bg-white/10 flex items-center justify-center mb-3 sm:mb-4">
               <Image 
                 src={proj.img} 
                 alt={proj.name} 
@@ -46,15 +46,15 @@ export default function Projects() {
               />
             </div>
 
-            <h4 className="text-xl font-bold text-white mb-3 text-center group-hover:text-blue-300 transition-colors duration-200 tracking-tight">
+            <h4 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 text-center group-hover:text-blue-300 transition-colors duration-200 tracking-tight">
               {proj.name}
             </h4>
 
-            <p className="text-gray-300 text-sm text-center mb-6 leading-relaxed">
+            <p className="text-gray-300 text-xs sm:text-sm text-center mb-4 sm:mb-6 leading-relaxed">
               {proj.desc}
             </p>
 
-            <div className="flex flex-wrap gap-2 justify-center">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 justify-center">
               {proj.tech.map((t) => {
                 const bgGradients: Record<string, string> = {
                   'Next.js': 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900',
@@ -71,14 +71,14 @@ export default function Projects() {
                     key={t.name} 
                     className={`
                       ${bgGradients[t.name] || 'bg-gradient-to-br from-slate-800 to-slate-900'}
-                      text-white/90 px-3 py-1.5 rounded-full text-[11px]
+                      text-white/90 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-[11px]
                       border border-white/10
-                      flex items-center gap-2
+                      flex items-center gap-1.5 sm:gap-2
                       transition-transform duration-200 hover:scale-105
                       backdrop-blur-sm
                     `}
                   >
-                    <div className="w-4 h-4 relative bg-white/5 rounded-full p-0.5">
+                    <div className="w-3 h-3 sm:w-4 sm:h-4 relative bg-white/5 rounded-full p-0.5">
                       <Image 
                         src={t.icon} 
                         alt={t.name} 

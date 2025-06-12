@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram, FaFacebook } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaInstagram, FaFacebook, FaDownload } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 const About = () => {
@@ -7,7 +7,7 @@ const About = () => {
     <section className="w-full max-w-4xl flex flex-col items-center glassmorphism p-4 sm:p-10 rounded-3xl shadow-2xl">
       <div className="relative w-32 h-32 sm:w-40 sm:h-40 mb-6 sm:mb-8 rounded-full overflow-hidden border-4 border-white/30 shadow-xl">
         <Image 
-          src="/profile.jpg" 
+          src="/profile/profile.jpg" 
           alt="Profile Photo" 
           fill 
           className="object-cover"
@@ -28,11 +28,11 @@ const About = () => {
           </h2>
         </div>
 
-        <div className="flex flex-wrap gap-4 justify-center mt-6">
+        <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
           <a 
             href="mailto:sukrukemuk@gmail.com" 
             className="hover:scale-105 transition-transform duration-200" 
-            aria-label="Email gönder"
+            aria-label="Send email"
           >
             <FaEnvelope size={28} className="text-white/80 hover:text-blue-400" />
           </a>
@@ -41,7 +41,7 @@ const About = () => {
             target="_blank" 
             rel="noopener noreferrer" 
             className="hover:scale-105 transition-transform duration-200" 
-            aria-label="GitHub profilimi ziyaret et"
+            aria-label="Visit my GitHub profile"
           >
             <FaGithub size={28} className="text-white/80 hover:text-purple-400" />
           </a>
@@ -50,7 +50,7 @@ const About = () => {
             target="_blank" 
             rel="noopener noreferrer" 
             className="hover:scale-105 transition-transform duration-200" 
-            aria-label="LinkedIn profilimi ziyaret et"
+            aria-label="Visit my LinkedIn profile"
           >
             <FaLinkedin size={28} className="text-white/80 hover:text-blue-400" />
           </a>
@@ -59,7 +59,7 @@ const About = () => {
             target="_blank" 
             rel="noopener noreferrer" 
             className="hover:scale-105 transition-transform duration-200" 
-            aria-label="X (Twitter) profilimi ziyaret et"
+            aria-label="Visit my X (Twitter) profile"
           >
             <FaXTwitter size={30} className="text-white/80 hover:text-gray-400" />
           </a>
@@ -68,7 +68,7 @@ const About = () => {
             target="_blank" 
             rel="noopener noreferrer" 
             className="hover:scale-105 transition-transform duration-200" 
-            aria-label="Instagram profilimi ziyaret et"
+            aria-label="Visit my Instagram profile"
           >
             <FaInstagram size={28} className="text-white/80 hover:text-pink-400" />
           </a>
@@ -77,7 +77,7 @@ const About = () => {
             target="_blank" 
             rel="noopener noreferrer" 
             className="hover:scale-105 transition-transform duration-200" 
-            aria-label="Facebook profilimi ziyaret et"
+            aria-label="Visit my Facebook profile"
           >
             <FaFacebook size={28} className="text-white/80 hover:text-blue-400" />
           </a>
@@ -97,15 +97,24 @@ const About = () => {
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-4 text-gray-400 text-sm">
-          <p className="flex items-center gap-2">
+        <div className="flex items-center justify-center gap-2 sm:gap-4 text-gray-400 text-sm flex-wrap">
+          <div className="flex items-center gap-2 px-2.5 py-1.5 bg-blue-500/10 rounded-lg min-w-[120px] justify-center">
             <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-            Izmir, Turkey
-          </p>
-          <p className="flex items-center gap-2">
+            <span>Izmir, Turkey</span>
+          </div>
+          <div className="flex items-center gap-2 px-2.5 py-1.5 bg-purple-500/10 rounded-lg min-w-[120px] justify-center">
             <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
-            English (B1)
-          </p>
+            <span>English (B1)</span>
+          </div>
+          <a 
+            href="/cv/Sukru_Kemuk_Software_Engineer_CV.pdf.pdf" 
+            download
+            className="flex items-center gap-2 px-2.5 py-1.5 bg-white/10 rounded-lg transition-all duration-300 hover:scale-105 group min-w-[120px] justify-center" 
+            aria-label="Download my Resume"
+          >
+            <FaDownload size={16} className="text-white/80 group-hover:text-green-400" />
+            <span>Resume</span>
+          </a>
         </div>
       </div>
     </section>

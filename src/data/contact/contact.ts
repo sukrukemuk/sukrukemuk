@@ -52,13 +52,13 @@ export const socialLinks: SocialLink[] = [
     name: "X (Twitter)",
     url: "https://x.com/sukrukemuk",
     color: "gray",
-    ariaLabel: "X (Twitter) profilimi ziyaret et"
+    ariaLabel: "Visit my X (Twitter) profile"
   },
   {
     icon: FaFacebook,
     name: "Facebook",
     url: "https://facebook.com/sukrukemukk",
     color: "blue",
-    ariaLabel: "Facebook profilimi ziyaret et"
+    ariaLabel: "Visit my Facebook profile"
   }
 ]; 

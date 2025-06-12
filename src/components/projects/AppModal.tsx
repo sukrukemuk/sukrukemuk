@@ -32,7 +32,7 @@ export default function AppModal({ selectedApp, currentScreenshotIndex, onClose,
                     />
                   </div>
                   <Image
-                    src="/iphone_mockup.png"
+                    src="/mockup/iphone_mockup.png"
                     alt="iPhone Mockup"
                     fill
                     className="object-contain z-30 pointer-events-none select-none"

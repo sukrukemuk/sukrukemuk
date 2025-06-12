@@ -80,7 +80,7 @@ export default function IPhoneUI({ apps, onModalOpenChange, onAppSelect }: IPhon
       {/* iPhone Mockup */}
       <div className="relative w-full h-full">
         <Image
-          src="/iphone_mockup.png"
+          src="/mockup/iphone_mockup.png"
           alt="iPhone Mockup"
           fill
           className="object-contain z-10"
@@ -89,7 +89,7 @@ export default function IPhoneUI({ apps, onModalOpenChange, onAppSelect }: IPhon
         {/* Screen Content */}
         <div className="absolute top-[3%] left-[4%] right-[4%] bottom-[3%] rounded-[40px] overflow-hidden z-0">
           <Image
-            src="/wallpaper.jpg"
+            src="/mockup/wallpaper.jpg"
             alt="Wallpaper"
             fill
             className="object-cover"
@@ -99,11 +99,11 @@ export default function IPhoneUI({ apps, onModalOpenChange, onAppSelect }: IPhon
             <span className={`text-[15px] font-semibold text-white ${sfPro.className}`}>9:41</span>
             <div className="flex items-center space-x-2">
               {/* Cellular Icon */}
-              <Image src="/cellular.png" alt="Cellular Signal" width={16} height={16} style={{ filter: 'invert(1) brightness(2)' }} />
+              <Image src="/mockup/cellular.png" alt="Cellular Signal" width={16} height={16} style={{ filter: 'invert(1) brightness(2)' }} />
               {/* WiFi Icon */}
-              <Image src="/wifi.png" alt="WiFi Signal" width={16} height={16} style={{ filter: 'invert(1) brightness(2)' }} />
+              <Image src="/mockup/wifi.png" alt="WiFi Signal" width={16} height={16} style={{ filter: 'invert(1) brightness(2)' }} />
               {/* Battery Icon */}
-              <Image src="/battery.png" alt="Battery" width={20} height={20} style={{ filter: 'invert(1) brightness(2)' }} />
+              <Image src="/mockup/battery.png" alt="Battery" width={20} height={20} style={{ filter: 'invert(1) brightness(2)' }} />
             </div>
           </div>
         </div>

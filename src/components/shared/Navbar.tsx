@@ -56,7 +56,7 @@ const Navbar = () => {
                   });
                 }
               }}
-              aria-label="Ana sayfaya dön"
+              aria-label="Return to home page"
             >
               {displayText}
               {isTyping && <span className="animate-blink">|</span>}
@@ -75,7 +75,7 @@ const Navbar = () => {
                       ? 'bg-white/10 text-white shadow-lg'
                       : 'text-white/70 hover:bg-white/5 hover:text-white'
                   } px-4 py-2 rounded-full text-sm font-medium backdrop-blur-xl transition-all duration-300 ease-in-out hover:shadow-md hover:scale-105`}
-                  aria-label={`${item.name} sayfasına git`}
+                  aria-label={`Go to ${item.name} page`}
                 >
                   {item.name}
                 </Link>
