@@ -20,6 +20,14 @@ export const metadata: Metadata = {
     title: "Şükrü Kemük - Software Developer",
     description: "I showcase my mobile and web development projects on my personal website.",
     siteName: "Şükrü Kemük - Software Developer",
+    images: [
+      {
+        url: '/icon.png',
+        width: 512,
+        height: 512,
+        alt: 'Şükrü Kemük Logo',
+      }
+    ],
   },
   twitter: {
     card: "summary_large_image",
