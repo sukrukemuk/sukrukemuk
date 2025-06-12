@@ -93,6 +93,7 @@ const Navbar = () => {
             <button
               onClick={() => setIsDrawerOpen(!isDrawerOpen)}
               className="text-white/90 hover:text-white focus:outline-none transition-colors duration-300"
+              aria-label={isDrawerOpen ? "Close navigation menu" : "Open navigation menu"}
             >
               <svg
                 className="h-6 w-6"
