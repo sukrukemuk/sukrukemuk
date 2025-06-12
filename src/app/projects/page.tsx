@@ -257,11 +257,11 @@ export default function Projects() {
                         />
                       </div>
                     )}
-                    <div className="flex flex-col flex-grow">
-                      <h3 className="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-400 group-hover:from-blue-400 group-hover:to-pink-400 transition-colors duration-200">
+                    <div className="flex flex-col flex-grow min-w-0">
+                      <h3 className="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-400 group-hover:from-blue-400 group-hover:to-pink-400 transition-colors duration-200 truncate">
                         {projectName}
                       </h3>
-                      <div className="flex gap-2 mt-2">
+                      <div className="flex flex-wrap gap-2 mt-2">
                         {techIcons.map((icon: string, index: number) => (
                           <div key={index} className="w-8 h-8 rounded-lg bg-white/30 shadow-sm flex items-center justify-center">
                             <Image
@@ -278,7 +278,7 @@ export default function Projects() {
                     </div>
                     <button
                       onClick={() => setSelectedProject({ name: projectName, type: 'mobile' })}
-                      className="w-10 h-10 rounded-lg bg-white/20 hover:bg-white/30 transition-colors duration-200 flex items-center justify-center flex-shrink-0"
+                      className="w-10 h-10 rounded-lg bg-white/20 hover:bg-white/30 transition-colors duration-200 flex items-center justify-center flex-shrink-0 ml-2"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
