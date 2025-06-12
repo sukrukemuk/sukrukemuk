@@ -41,7 +41,7 @@ export default function AppModal({ selectedApp, currentScreenshotIndex, onClose,
                 </>
               ) : (
                 <div className="absolute top-[3.5%] left-0 w-full h-[93%] z-20 rounded-[40px] overflow-hidden bg-white/10 flex items-center justify-center">
-                  <p className="text-white/80 text-sm text-center px-4">Screenshots are not available yet</p>
+                  <p className="text-white/80 text-sm text-center px-4">Application is not ready for use yet</p>
                 </div>
               )}
             </div>
