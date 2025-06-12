@@ -65,8 +65,8 @@ export default function Home() {
       </div>
 
       {/* ABOUT */}
-      <section className="w-full max-w-4xl flex flex-col items-center glassmorphism mt-14 p-10 rounded-3xl shadow-2xl">
-        <div className="relative w-40 h-40 mb-8 rounded-full overflow-hidden border-4 border-white/30 shadow-xl">
+      <section className="w-full max-w-4xl flex flex-col items-center glassmorphism mt-14 p-4 sm:p-10 rounded-3xl shadow-2xl">
+        <div className="relative w-32 h-32 sm:w-40 sm:h-40 mb-6 sm:mb-8 rounded-full overflow-hidden border-4 border-white/30 shadow-xl">
           <Image 
             src="/profile.jpg" 
             alt="Profile Photo" 
@@ -79,9 +79,9 @@ export default function Home() {
           />
         </div>
         
-        <div className="text-center space-y-6 max-w-3xl">
-          <div className="space-y-3">
-            <h1 className="text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-2 tracking-tight drop-shadow">
+        <div className="text-center space-y-4 sm:space-y-6 max-w-3xl">
+          <div className="space-y-2 sm:space-y-3">
+            <h1 className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-2 tracking-tight drop-shadow">
               Şükrü Kemük
             </h1>
             <h2 className="text-2xl text-gray-300 font-medium">
@@ -144,7 +144,7 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 border border-white/10 hover:border-white/20 transition-all duration-300 mt-8">
+          <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 sm:p-8 border border-white/10 hover:border-white/20 transition-all duration-300 mt-6 sm:mt-8">
             <div className="space-y-6">
               <p className="text-gray-300 text-base leading-relaxed">
                 I am a software developer specializing in modern web and mobile applications. I develop high-performance, scalable projects with Next.js and Flutter, and create responsive, user-friendly interfaces by implementing Figma designs using Tailwind CSS.
@@ -172,17 +172,17 @@ export default function Home() {
       </section>
 
       {/* TECHNOLOGIES */}
-      <section className="w-full max-w-4xl mt-12 glassmorphism p-8 rounded-2xl shadow-xl">
-        <h3 className="text-2xl font-bold text-white mb-8 text-center relative">
+      <section className="w-full max-w-4xl mt-8 sm:mt-12 glassmorphism p-4 sm:p-8 rounded-2xl shadow-xl">
+        <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 sm:mb-8 text-center relative">
           <span className="relative z-10">Technologies I Use</span>
           <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
         </h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-8 justify-items-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-8 justify-items-center">
           {technologies.map((tech, idx) => (
             <div key={tech.name} className="group w-full">
-              <div className="relative bg-gradient-to-br from-white/5 to-white/10 rounded-2xl p-6 transition-transform duration-200 hover:-translate-y-1">
+              <div className="relative bg-gradient-to-br from-white/5 to-white/10 rounded-2xl p-4 sm:p-6 transition-transform duration-200 hover:-translate-y-1">
                 <div className="relative flex flex-col items-center">
-                  <div className="w-16 h-16 mb-4 relative">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 mb-3 sm:mb-4 relative">
                     <Image 
                       src={tech.icon} 
                       alt={tech.name} 
@@ -193,7 +193,7 @@ export default function Home() {
                       sizes="64px"
                     />
                   </div>
-                  <span className="text-white font-medium text-lg text-center group-hover:text-blue-300 transition-colors duration-200">
+                  <span className="text-white font-medium text-base sm:text-lg text-center group-hover:text-blue-300 transition-colors duration-200">
                     {tech.name}
                   </span>
                 </div>
