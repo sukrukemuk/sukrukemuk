@@ -49,10 +49,10 @@ export const socialLinks: SocialLink[] = [
   },
   {
     icon: FaXTwitter,
-    name: "X (Twitter)",
+    name: "X",
     url: "https://x.com/sukrukemuk",
     color: "gray",
-    ariaLabel: "Visit my X (Twitter) profile"
+    ariaLabel: "Visit my X profile"
   },
   {
     icon: FaFacebook,

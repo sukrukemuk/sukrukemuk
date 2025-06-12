@@ -6,6 +6,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
   title: "Şükrü Kemük - Software Developer",
   description: "I showcase my mobile and web development projects on my personal website. Explore my projects developed with React, Next.js, TypeScript, and modern web technologies.",
   keywords: ["Şükrü Kemük", "Software Developer", "Web Developer", "Mobile Developer", "React", "Next.js", "TypeScript", "Flutter", "Firebase"],

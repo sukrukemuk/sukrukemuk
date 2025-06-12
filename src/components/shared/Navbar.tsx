@@ -40,7 +40,7 @@ const Navbar = () => {
   }, [displayText, isDeleting, isTyping, fullText]);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50">
+    <nav className="fixed top-0 left-0 right-0 z-50 safe-top">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
@@ -125,4 +125,18 @@ const Navbar = () => {
   );
 };
 
-export default Navbar; 
+export default Navbar;
+
+// Add safe area styles
+const styles = `
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+`;
+
+// Add styles to document
+if (typeof document !== 'undefined') {
+  const styleSheet = document.createElement('style');
+  styleSheet.textContent = styles;
+  document.head.appendChild(styleSheet);
+} 
