@@ -145,7 +145,7 @@ export default function IPhoneUI({ apps, onModalOpenChange, onAppSelect }: IPhon
                   />
                 </div>
               </div>
-              <div className="flex flex-col items-center cursor-pointer group" onClick={() => window.open('https://resepsion.vercel.app/', '_blank')}>
+              <div className="flex flex-col items-center cursor-pointer group" onClick={() => window.open('https://resepsion.com/', '_blank')}>
                 <div className="w-14 h-14 rounded-[18px] overflow-hidden shadow-lg transform transition-transform duration-200 group-hover:scale-110 bg-white">
                   <Image
                     src="/app-icons/resepsion.jpg"
